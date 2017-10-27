@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<incomingConfiguration>
+    <gpio>
+        <input  chan="0"  name="input_0"/>
+        <input  chan="2"  name="input_1"/>
+        <input  chan="3"  name="input_2"/>
+        <input  chan="4"  name="input_3"/>
+        <output chan="5"  name="output_0"/>
+        <output chan="6"  name="output_1"/>
+        <output chan="25" name="output_2"/>
+        <output chan="27" name="output_3"/>
+    </gpio>
+</incomingConfiguration>
