@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-
+/*
 class Application                               // Abstract class
 {
 
@@ -14,20 +14,21 @@ class Application                               // Abstract class
     protected:
         string appName;
 };
+*/
 
-
-class Io : public Application
+class Io /* : public Application */
 {
 
     public:
         Io();
+        ~Io();
         void Method1();
 
     private:
 
 };
 
-
+/*
 // Defines
 Application *__thisApp;
 
@@ -41,13 +42,16 @@ Application::Application(string appName) {
 Application::~Application() {
 //  shutdown();
 }
-
+*/
 
 // Io.cpp  : Io Class
 //
 
-Io::Io() : Application ("IO") {
+Io::Io() /*: Application ("IO") */ {
 };
+
+Io::~Io() {}
+
 
 void Method1 () {
     cout << "Io::Method1" << endl;
