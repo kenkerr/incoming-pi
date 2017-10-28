@@ -6,9 +6,9 @@
 
 
 Io::Io() : Application ("IO") {
-};
+}
 
-void Method1 () {
+void Io::Method1 () {
     cout << "Io::Method1" << endl;
 }
 

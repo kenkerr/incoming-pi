@@ -7,9 +7,9 @@ class Application                               // Abstract class
 {
 
     public:
-        virtual void Method1()=0;               // Pure virtual function (abstract function)
         Application(string appName);
         ~Application();
+        virtual void Method1()=0;               // Pure virtual function (abstract function)
 
     protected:
         string appName;
@@ -47,9 +47,9 @@ Application::~Application() {
 //
 
 Io::Io() : Application ("IO") {
-};
+}
 
-void Method1 () {
+void Io::Method1 () {
     cout << "Io::Method1" << endl;
 }
 
