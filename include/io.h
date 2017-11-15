@@ -8,7 +8,7 @@ class Io : public Application
 
     public:
         Io();
-//      ~Io();
+        ~Io();
         void Method1();
 
     private:

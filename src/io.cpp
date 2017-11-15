@@ -8,6 +8,9 @@
 Io::Io() : Application ("IO") {
 }
 
+Io::~Io()  {
+}
+
 void Io::Method1 () {
     cout << "Io::Method1" << endl;
 }
@@ -18,7 +21,7 @@ int main (){
     Io app = Io();
 
     cout << "Io:  Starting..." << endl;
-//  app.Method1();
+    app.Method1();
 
     return 0;
 }

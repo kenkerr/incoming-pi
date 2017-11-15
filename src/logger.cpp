@@ -1,7 +1,8 @@
-// Logger.cpp
+// Logger.cpp - from professional C++ programming 
+//        http://www.wiley.com/WileyCDA/WileyTitle/productCd-0470932449.html
 // Implementation of a multithread safe singleton logger class
 #include <stdexcept>
-#include "Logger.h"
+#include "logger.h"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ const string Logger::kLogLevelDebug = "DEBUG";
 const string Logger::kLogLevelInfo  = "INFO";
 const string Logger::kLogLevelError = "ERROR";
 
-const char* const Logger::kLogFileName = "/var/log/LvLights/events.log";
+const char* const Logger::kLogFileName = "/var/log/incoming/events.log";
 
 Logger* Logger::pInstance = nullptr;
 
