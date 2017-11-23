@@ -10,7 +10,8 @@ const string Logger::kLogLevelDebug = "DEBUG";
 const string Logger::kLogLevelInfo  = "INFO";
 const string Logger::kLogLevelError = "ERROR";
 
-const char* const Logger::kLogFileName = "/var/log/incoming/events.log";
+//const char* const Logger::kLogFileName = "/var/log/incoming/events.log";
+const char* const Logger::kLogFileName = "/home/pi/projects/incoming/logs/events.log";
 
 Logger* Logger::pInstance = nullptr;
 
@@ -64,5 +65,7 @@ void Logger::logHelper(const std::string& inMessage, const std::string& inLogLev
 {
     time (&rawTime);
     currentLocalTime = localtime (&rawTime);
+    cout << asctime(currentLocalTime) << "-D-" << endl;
+
     mOutputStream << asctime(currentLocalTime) << ":" << inLogLevel << ": " << inMessage << endl;
 }
