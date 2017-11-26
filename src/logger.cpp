@@ -3,6 +3,7 @@
 // Implementation of a multithread safe singleton logger class
 #include <stdexcept>
 #include "logger.h"
+#include "myUtils.h"
 
 using namespace std;
 
@@ -11,7 +12,8 @@ const string Logger::kLogLevelInfo  = "INFO";
 const string Logger::kLogLevelError = "ERROR";
 
 //const char* const Logger::kLogFileName = "/var/log/incoming/events.log";
-const char* const Logger::kLogFileName = "/home/pi/projects/incoming/logs/events.log";
+//const char* const Logger::kLogFileName = "/home/pi/projects/incoming/logs/events.log";
+const char* const Logger::kLogFileName = getenv("MY_EVENT_LOG");
 
 Logger* Logger::pInstance = nullptr;
 
@@ -20,10 +22,18 @@ mutex Logger::sMutex;
 Logger& Logger::instance()
 {
     static Cleanup cleanup;
+//  char *logFile;
 
     lock_guard<mutex> guard(sMutex);
-    if (pInstance == nullptr)
+    if (pInstance == nullptr) {
         pInstance = new Logger();
+/*
+        logFile = getenv("MY_LOG_DIR");
+        strcat (logFile, "events.log");
+
+        const char* const Logger::kLogFileName = logFile; 
+        */
+    }
     return *pInstance;
 }
 
@@ -65,7 +75,6 @@ void Logger::logHelper(const std::string& inMessage, const std::string& inLogLev
 {
     time (&rawTime);
     currentLocalTime = localtime (&rawTime);
-    cout << asctime(currentLocalTime) << "-D-" << endl;
 
-    mOutputStream << asctime(currentLocalTime) << ":" << inLogLevel << ": " << inMessage << endl;
+    mOutputStream << myAsctime(currentLocalTime) << ":" << inLogLevel << ": " << inMessage << endl;
 }

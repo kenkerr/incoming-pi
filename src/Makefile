@@ -1,5 +1,6 @@
 IDIR=../include
 ODIR=obj
+BDIR=../bin
 
 CC=g++
 CFLAGS=-I$(IDIR) -std=c++11
@@ -13,10 +14,10 @@ default:  io
 # Create the executable 
 #
 io: $(OBJS)
-	$(CC) $(CFLAGS) -o io $(OBJS) 
+	$(CC) $(CFLAGS) -o $(BDIR)/io $(OBJS) 
 
 testLogger: $(ODIR)/testLogger.o $(ODIR)/logger.o
-	$(CC) $(CFLAGS) -o testLogger $(ODIR)/testLogger.o $(ODIR)/logger.o
+	$(CC) $(CFLAGS) -o $(BDIR)/testLogger $(ODIR)/testLogger.o $(ODIR)/logger.o
 
 # Create the necessary object files
 #
