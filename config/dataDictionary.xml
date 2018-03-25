@@ -1,0 +1,28 @@
+<dataDictionary>
+    <ioSubsys>
+        <gpio>
+            <pin number="27" direction="output" />
+            <pin number="28" direction="output" />
+        </gpio>
+    </ioSubsys>
+
+    <register>
+        <number>1</number>
+        <format>1.1x</format>
+        <type>int</type>
+        <name>strobe</name>
+        <description>Output strobe LED</description>
+        <source>gpio</source>
+        <chan>27</chan>
+    </register>
+
+    <register>
+        <number>2</number>
+        <format>1.1x</format>
+        <type>int</type>
+        <name>siren</name>
+        <description>Output siren</description>
+        <source>gpio</source>
+        <chan>28</chan>
+    </register>
+</dataDictionary>

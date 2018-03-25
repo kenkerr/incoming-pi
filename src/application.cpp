@@ -1,3 +1,6 @@
+#include "logger.h"
+#include <vector>
+#include <string>
 #include "application.h"
 
 // Defines
@@ -14,3 +17,13 @@ Application::~Application() {
 //  shutdown();
 }
 
+void Application::Init() {
+
+    string startMessage = this->appName + " started";
+    Logger::instance().log(startMessage, Logger::kLogLevelInfo);
+/*
+    vector<string> items = {"item1", "item2"};
+    Logger::instance().log(items, Logger::kLogLevelError);
+*/
+    return;
+}

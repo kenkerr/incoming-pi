@@ -13,6 +13,7 @@ class Application                               // Abstract class
         virtual void Method1()=0;               // Pure virtual function (abstract function)
         Application(string appName);
         ~Application();
+        void Init();
 
     protected:
         string appName;
