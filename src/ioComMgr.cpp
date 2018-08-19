@@ -4,6 +4,7 @@
 #include "ioCom.h"
 #include "ioComMgr.h"
 #include "logger.h"
+#include "registerMap.h"
 
 
 // Constructor
@@ -11,6 +12,7 @@ IoComMgr::IoComMgr(){
     ifstream     regMapFile;
     string       regMapFilename;
     const char   *pCfgDir;
+    REGDATA_TYPE regDataEntry;
    
     pCfgDir = getenv ("CFGDIR");
     if (!pCfgDir) {
@@ -20,8 +22,15 @@ IoComMgr::IoComMgr(){
     regMapFilename.assign (pCfgDir);
     regMapFilename += "/" + REGMAP_FILENAME;
 
+
+    cout << "Read register map file:" << endl;
     regMapFile.open (regMapFilename, ios::binary);
-    regMapFile.read ((char *) &registerMap, sizeof(registerMap));
+    while (regMapFile.read ((char *) &regDataEntry, sizeof(REGDATA_TYPE))) {
+        cout << "regName #" << regDataEntry.regNumber<<" name: "<<regDataEntry.regName<<endl;
+        if (!registerMap.insert(std::pair<string, int> (regDataEntry.regName, regDataEntry.regNumber)).second) {
+            Logger::instance().log("Failed to create map entry", Logger::kLogLevelError);
+        }
+    }
     regMapFile.close();
 
     std::map<string,int>::iterator it=registerMap.begin();
@@ -31,6 +40,7 @@ IoComMgr::IoComMgr(){
         string regName=it->first;
         int    regNum =it->second;
         cout << "\t register " << regNum << " name = " << regName << endl;
+        it++;
     }
 }
 

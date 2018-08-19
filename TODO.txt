@@ -1,0 +1,7 @@
+Review data structures 
+Document interfaces
+Review control flow
+Define next steps
+Wire it up and test the code so far.
+Next steps.
+

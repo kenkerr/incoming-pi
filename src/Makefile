@@ -10,7 +10,7 @@ DEPS=$(IDIR)/application.h $(IDIR)/logger.h
 SPTOBJS=$(ODIR)/application.o $(ODIR)/logger.o 
 LIBS=$(LDIR)
 
-default:  io configure ioComMgr cmdServer
+default:  io configure cmdServer
 
 # Create the executable 
 #

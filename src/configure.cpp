@@ -35,6 +35,7 @@ int main (){
     string      regMapFilename;
     const char  *pCfgDir;
     int         registerNumber;
+    int         idx;
     string      registerName;
     ofstream    regMapFile;
 
@@ -72,7 +73,8 @@ int main (){
     // Open the register Map file that is used at run time
     regMapFile.open (regMapFilename, ios::binary);
 
-    for (pElement = pRoot->FirstChildElement ("register"); pElement != nullptr; pElement=pElement->NextSiblingElement("register") ) {
+    for (pElement = pRoot->FirstChildElement ("register"); pElement != nullptr; pElement=pElement->NextSiblingElement("register") ) 
+    {
 
         XMLElement *pRegisterNumber = pElement->FirstChildElement("number");
         pRegisterNumber->QueryIntText(&registerNumber);
@@ -88,9 +90,16 @@ int main (){
         }
     }
 
-//TODO registerMap must be written out element by element  (needs some research)
-    for (i=0; i<registerMap.size, i++) {
-        regMapFile.write ((char *) &registerMap.stringElement, sizeof(registerMap));
+    std::map<std::string, int>::iterator it=registerMap.begin();
+    idx = 0;
+    while (it != registerMap.end()) {
+        cout << "regName = " << it->first << " register # = " << it->second << endl;
+        regData[idx].regName   = it->first;
+        regData[idx].regNumber = it->second;
+
+        regMapFile.write ((char *) &regData[idx], sizeof(REGDATA_TYPE));
+        it++;
+        idx++;
     }
     regMapFile.close();    
 
